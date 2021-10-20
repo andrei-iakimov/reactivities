@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211020004247_ActivityAttendies")]
+    partial class ActivityAttendies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,9 +41,6 @@ namespace Persistence.Migrations
 
                     b.Property<string>("Venue")
                         .HasColumnType("TEXT");
-
-                    b.Property<bool>("isCancelled")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -267,7 +266,7 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.ActivityAttendee", b =>
                 {
                     b.HasOne("Domain.Activity", "Activity")
-                        .WithMany("Attendees")
+                        .WithMany("Attendies")
                         .HasForeignKey("ActivityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -336,7 +335,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Activity", b =>
                 {
-                    b.Navigation("Attendees");
+                    b.Navigation("Attendies");
                 });
 
             modelBuilder.Entity("Domain.AppUser", b =>

@@ -5,12 +5,12 @@ interface Props {
     errors: string[] | null;
 }
 
-export default function ValidationErrors({errors}: Props) {
+export default function ValidationErrors({errors}: any) {
     return (
         <Message error>
             {errors && (
                 <Message.List>
-                    {errors.map((err: any, i) => (
+                    {errors.map((err: any, i : any) => (
                         <Message.Item key={i}>{err}</Message.Item>
                     ))}
                 </Message.List>
