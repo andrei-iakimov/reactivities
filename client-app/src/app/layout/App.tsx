@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, ModalContent } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
 import { observer } from 'mobx-react-lite';
@@ -20,15 +20,15 @@ function App() {
   const location = useLocation();
   const {commonStore, userStore} = useStore();
 
-  useEffect( () => {
-    if(commonStore.token){
-      userStore.getUser().finally(() => commonStore.setAppLoaded())
-    } else{
+  useEffect(() => {
+    if (commonStore.token) {
+      userStore.getUser().finally(() => commonStore.setAppLoaded());
+    } else {
       commonStore.setAppLoaded();
     }
-  }, [commonStore, userStore]);
+  }, [commonStore, userStore])
 
-  if(!commonStore.appLoaded) return <LoadingComponent content='Loading app...'></LoadingComponent>
+  if (!commonStore.appLoaded) return <LoadingComponent content='Loading app...' />
 
   return (
     <>

@@ -7,8 +7,8 @@ import UserStore from "./userStore";
 interface Store {
     activityStore: ActivityStore;
     commonStore: CommonStore;
-    userStore: UserStore,
-    modalStore: ModalStore
+    userStore: UserStore;
+    modalStore: ModalStore;
 }
 
 export const store: Store = {
